@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Benedis Lifescience — Dashboard</title>
+
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Dashboard styles (namespaced) -->
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+
+<body>
+  <div id="benedis-dashboard">
+    <div class="d-flex" id="wrapper">
+
+      <!-- Sidebar -->
+      <nav id="sidebar" class="bg-white border-right">
+        <div class="sidebar-sticky p-3">
+          <div class="text-center mb-3">
+            <div class="avatar-wrapper mb-2">
+              <!-- replace src below with your uploaded image if needed -->
+              <img src="assets/images/doctor-profile-img.jpg" alt="avatar" class="avatar-img">
+            </div>
+            <h6 class="mb-0 font-weight-bold">Mr. Mohan Sharma</h6>
+            <div class="role-badge mt-2">BE - Business Executives</div>
+          </div>
+
+          <ul class="nav flex-column sidebar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#"><i class="fa-solid fa-table mr-2"></i> Dashboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#appointmentsSub" data-toggle="collapse" aria-expanded="false">
+                <i class="fa-regular fa-calendar-check mr-2"></i> Tour Plan <i
+                  class="fa fa-chevron-down float-right"></i>
+              </a>
+              <div id="appointmentsSub" class="collapse">
+                <ul class="sub-nav">
+                  <li><a href="add-tour-planner.html">Add Tour Plan</a></li>
+                  <li><a href="view-tour-planner.html">View All Tour Plans</a></li>
+                  <li><a href="#">Submit DCR Report</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#doctorsSub" data-toggle="collapse" aria-expanded="false">
+                <i class="fa-solid fa-user-doctor mr-2"></i> Doctors <i class="fa fa-chevron-down float-right"></i>
+              </a>
+              <div id="doctorsSub" class="collapse">
+                <ul class="sub-nav">
+                  <li><a href="#">All Doctors</a></li>
+                  <li><a href="#">Add Doctor</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#reportingSub" data-toggle="collapse" aria-expanded="false">
+                <i class="fa-solid fa-triangle-exclamation mr-2"></i> False Reporting <i
+                  class="fa fa-chevron-down float-right"></i>
+              </a>
+              <div id="reportingSub" class="collapse">
+                <ul class="sub-nav">
+                  <li><a href="#">List</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#leaveSub" data-toggle="collapse" aria-expanded="false">
+                <i class="fa-regular fa-clock mr-2"></i> Apply Leave <i class="fa fa-chevron-down float-right"></i>
+              </a>
+              <div id="leaveSub" class="collapse">
+                <ul class="sub-nav">
+                  <li><a href="#">Apply</a></li>
+                  <li><a href="#">My Leaves</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#expenseSub" data-toggle="collapse" aria-expanded="false">
+                <i class="fa-solid fa-wallet mr-2"></i> Expense <i class="fa fa-chevron-down float-right"></i>
+              </a>
+              <div id="expenseSub" class="collapse">
+                <ul class="sub-nav">
+                  <li><a href="#">Add Expense</a></li>
+                  <li><a href="#">Expense List</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-calendar-day mr-2"></i> Holidays</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- /#sidebar -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper" class="w-100">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white border-bottom topbar">
+          <button class="btn btn-link" id="menu-toggle"><i class="fa fa-bars"></i></button>
+
+          <div class="navbar-brand ml-2">Benedis Lifescience</div>
+
+          <ul class="navbar-nav ml-auto align-items-center">
+            <li class="nav-item mr-3 d-none d-md-block">
+              <a class="nav-link small text-muted" href="#"><i class="fa-solid fa-house mr-2"></i>
+                Dashboard</a>
+            </li>
+
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="#"><i class="fa-regular fa-bell"></i></a>
+            </li>
+            <li class="nav-item dropdown profile-dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="profileMenu" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fa-regular fa-user"></i>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right shadow-sm" aria-labelledby="profileMenu">
+                <a class="dropdown-item" href="#">
+                  <i class="fa-regular fa-id-badge mr-2"></i> Profile
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger font-weight-bold" href="index.html">
+                  <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+        </nav>
+
+        <!-- Main container -->
+        <div class="container-fluid main-container p-4">
+          <!-- Breadcrumb / header -->
+          <div class="d-flex align-items-center mb-3">
+            <nav aria-label="breadcrumb" class="w-100">
+              <ol class="breadcrumb mb-0 bg-transparent p-0">
+                <li class="breadcrumb-item "><i class="fa-solid fa-house align-content-center"></i></li>
+                <li class="breadcrumb-item active">Add Tour Plan</li>
+              </ol>
+            </nav>
+          </div>
+
+          <!-- START: Enhanced Tour Plan Module (Start & End Date) -->
+          <div id="benedis-dashboard-tour" class="w-100">
+            <div class="row">
+
+              <!-- Left Side: Form -->
+              <div class="col-md-7">
+                <div class="tour-panel p-3">
+
+                  <!-- Row 1 : Plan Month -->
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label class="font-weight-600">Plan Month*</label>
+                      <select id="planMonthYear" class="form-control form-control-sm">
+                        <!-- Filled by JS like: Dec, 2025 -->
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Row 2 : Visit Time, Max Doctors, Total Assigned -->
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label class="font-weight-600">Visit Time*</label>
+                      <select id="visitTime" class="form-control form-control-sm">
+                        <option>Morning</option>
+                        <option>Evening</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                      <label class="font-weight-600">Max Doctors / Plan*</label>
+                      <input id="maxPerPlanVisible" type="text" class="form-control form-control-sm" value="15"
+                        readonly>
+                      <small class="form-text text-muted">Each tour plan can include up to 15 doctors.</small>
+                      <input id="visitsPerDay" type="hidden" value="15" />
+                    </div>
+
+                    <div class="form-group col-md-4">
+                      <label class="font-weight-600">Total Assigned*</label>
+                      <input id="totalAssigned" type="number" class="form-control form-control-sm" value="120" min="1"
+                        max="1000">
+                      <small class="form-text text-muted">Assigned doctors/chemists for this BE</small>
+                    </div>
+                  </div>
+
+                  <!-- Row 3 : Select Doctors -->
+                  <div class="form-group">
+                    <label class="font-weight-600">Select Doctors / Chemists*</label>
+
+                    <div class="custom-multiselect" id="docMultiWrap">
+                      <button type="button" class="multiselect-btn" id="multiselectToggle">
+                        <span id="multiselectLabel">Select Doctors*</span>
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+
+                      <div class="multiselect-dropdown d-none" id="multiselectDropdown">
+                        <div class="multiselect-search px-2 py-2">
+                          <input id="docSearch" class="form-control form-control-sm" placeholder="Search doctors..." />
+                        </div>
+                        <div class="multiselect-list p-2" id="multiselectList" role="listbox"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Row 4 : Remarks -->
+                  <div class="form-group">
+                    <label class="font-weight-600">Consolidated Remarks*</label>
+                    <textarea id="consolidatedRemarks" class="form-control form-control-sm" rows="3"
+                      placeholder="Add consolidated remarks for the plan"></textarea>
+                  </div>
+
+                  <!-- Submit / Reset -->
+                  <div class="d-flex justify-content-end">
+                    <button id="tourReset" class="btn btn-outline-secondary btn-sm mr-2">Reset</button>
+                    <button id="tourSubmit" class="btn btn-primary btn-sm">Submit Plan</button>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Right Side: Selected Doctors -->
+              <div class="col-md-5">
+                <div class="selected-panel p-3">
+
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="font-weight-600">
+                      Selected Doctors – <strong id="selCount">0</strong>
+                    </div>
+                    <button id="clearSelected" class="btn btn-sm btn-link">Clear</button>
+                  </div>
+
+                  <div class="selected-list p-2" id="selectedList">
+                    <div class="text-muted">No doctors selected yet.</div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- END: Enhanced Tour Plan Module -->
+
+
+
+
+          <!-- Empty content area (placeholder) -->
+          <div class="content-area mt-4">
+            <!-- Put charts / tables here -->
+          </div>
+
+          <!-- Footer -->
+          <footer class="footer mt-5 py-3 text-center text-muted">
+            © <span id="year"></span> Benedis Lifescience — All Rights Reserved
+          </footer>
+        </div>
+        <!-- /Main container -->
+      </div>
+      <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+  </div>
+
+  <!-- JS (Bootstrap 4) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Sidebar toggle (scoped to benedis-dashboard)
+    (function () {
+      var $menuToggle = document.querySelector('#benedis-dashboard #menu-toggle');
+      var $sidebar = document.querySelector('#benedis-dashboard #sidebar');
+      var $page = document.querySelector('#benedis-dashboard #page-content-wrapper');
+
+      $menuToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        $sidebar.classList.toggle('collapsed');
+        $page.classList.toggle('expanded');
+      });
+    })();
+
+
+  </script>
+
+
+  <!-- Put this after jQuery and Bootstrap JS -->
+  <script>
+    $(function () {
+      /* -------------------------
+         Config & Sample Data
+         -------------------------*/
+      // Replace this sampleDoctors array with an AJAX call to load real doctors.
+      const sampleDoctors = [
+        { id: 1,  name: "Dr. Arvind Sharma",        meta: "Cardiologist" },
+        { id: 2,  name: "Dr. Bhavya Verma",         meta: "Dermatologist" },
+        { id: 3,  name: "Dr. Chetan Singh",         meta: "General Physician" },
+        { id: 4,  name: "Dr. Devendra Rao",         meta: "Pediatrician" },
+        { id: 5,  name: "Dr. Eshan Patel",          meta: "Orthopedic" },
+        { id: 6,  name: "Dr. Farhan Kumar",         meta: "ENT Specialist" },
+        { id: 7,  name: "Dr. Gaurav Joshi",         meta: "Psychiatrist" },
+        { id: 8,  name: "Dr. Harsh Kapoor",         meta: "Oncologist" },
+        { id: 9,  name: "Dr. Ishaan Mehra",         meta: "Endocrinologist" },
+        { id: 10, name: "Dr. Jitin Nair",           meta: "Neurologist" },
+
+        { id: 11, name: "Dr. Kiran Reddy",          meta: "Nephrologist" },
+        { id: 12, name: "Dr. Lokesh Chatterjee",    meta: "Gastroenterologist" },
+        { id: 13, name: "Dr. Manish Saxena",        meta: "Pulmonologist" },
+        { id: 14, name: "Dr. Nirmal Dutta",         meta: "Rheumatologist" },
+        { id: 15, name: "Dr. Omesh Thomas",         meta: "Urologist" },
+        { id: 16, name: "Dr. Pranav Banerjee",      meta: "Hematologist" },
+        { id: 17, name: "Dr. Quentin Fernandes",    meta: "Plastic Surgeon" },
+        { id: 18, name: "Dr. Rhea Kulkarni",        meta: "Eye Specialist" },
+        { id: 19, name: "Dr. Shubham Gupta",        meta: "Dentist" },
+        { id: 20, name: "Dr. Tarun Abraham",        meta: "Radiologist" }
+      ];
+
+
+
+      const $planMonthYear = $('#planMonthYear');
+      const $multiselectDropdown = $('#multiselectDropdown');
+      const $multiselectList = $('#multiselectList');
+      const $docSearch = $('#docSearch');
+      const $multiselectToggle = $('#multiselectToggle');
+      const $multiselectLabel = $('#multiselectLabel');
+      const $selectedList = $('#selectedList');
+      const $selCount = $('#selCount');
+      const $clearSelected = $('#clearSelected');
+      const $tourReset = $('#tourReset');
+      const $tourSubmit = $('#tourSubmit');
+      const $maxPerPlanVisible = $('#maxPerPlanVisible');
+      const $visitsPerDay = $('#visitsPerDay');
+      const $totalAssigned = $('#totalAssigned');
+      const $consolidatedRemarks = $('#consolidatedRemarks');
+
+      /* -------------------------
+         Helpers
+         -------------------------*/
+      function parseMax() {
+        // prefer hidden visitsPerDay if present, otherwise visible field
+        const vHidden = parseInt($visitsPerDay.val(), 10);
+        if (!isNaN(vHidden) && vHidden > 0) return vHidden;
+        const vVisible = parseInt($maxPerPlanVisible.val(), 10);
+        return (isNaN(vVisible) ? 15 : vVisible);
+      }
+
+      function updateSelectedCount() {
+        const selected = $multiselectList.find('input[type="checkbox"]:checked').length;
+        $selCount.text(selected);
+      }
+
+      function renderSelectedPanel() {
+        const checked = $multiselectList.find('input[type="checkbox"]:checked');
+        if (checked.length === 0) {
+          $selectedList.html('<div class="text-muted">No doctors selected yet.</div>');
+          return;
+        }
+
+        const $wrap = $('<div class="list-group list-group-flush"></div>');
+        checked.each(function () {
+          const id = $(this).data('doc-id');
+          const name = $(this).data('doc-name');
+          const meta = $(this).data('doc-meta') || '';
+          const $item = $(`
+        <div class="list-group-item px-2 py-1 d-flex justify-content-between align-items-center">
+          <div>
+            <div class="font-weight-600">${name}</div>
+            <small class="text-muted">${meta}</small>
+          </div>
+          <button type="button" class="btn btn-sm btn-link remove-selected" data-doc-id="${id}">&times;</button>
+        </div>
+      `);
+          $wrap.append($item);
+        });
+
+        $selectedList.html($wrap);
+      }
+
+      function ensureMaxLimit() {
+        const max = parseMax();
+        const checkedCount = $multiselectList.find('input[type="checkbox"]:checked').length;
+        if (checkedCount > max) {
+          // uncheck extras (keep first max checked)
+          $multiselectList.find('input[type="checkbox"]:checked').each(function (i) {
+            if (i >= max) $(this).prop('checked', false);
+          });
+          alert(`Maximum ${max} doctors allowed per plan.`);
+          renderSelectedPanel();
+          updateSelectedCount();
+        }
+      }
+
+      /* -------------------------
+         Init Plan Month dropdown
+         -------------------------*/
+      function initPlanMonths(months = 12) {
+        $planMonthYear.empty();
+        const now = new Date();
+        for (let i = 0; i < months; i++) {
+          const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+          const label = d.toLocaleString('default', { month: 'short', year: 'numeric' }); // e.g., "Dec 2025"
+          const val = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; // e.g., "2025-12"
+          $planMonthYear.append(`<option value="${val}">${label}</option>`);
+        }
+      }
+
+      /* -------------------------
+         Build multiselect list
+         -------------------------*/
+      function buildDoctorList(doctors) {
+        $multiselectList.empty();
+        doctors.forEach(function (doc) {
+          const $row = $(`
+        <div class="form-check">
+          <input class="form-check-input doc-checkbox" type="checkbox" id="doc_${doc.id}" data-doc-id="${doc.id}"
+                 data-doc-name="${doc.name}" data-doc-meta="${doc.meta}">
+          <label class="form-check-label" for="doc_${doc.id}">
+            <strong>${doc.name}</strong> <small class="text-muted"> - ${doc.meta}</small>
+          </label>
+        </div>
+      `);
+          $multiselectList.append($row);
+        });
+      }
+
+      /* -------------------------
+         Events & UI behavior
+         -------------------------*/
+      // Toggle dropdown
+      $multiselectToggle.on('click', function (e) {
+        e.stopPropagation();
+        $multiselectDropdown.toggleClass('d-none');
+        // focus search when opening
+        if (!$multiselectDropdown.hasClass('d-none')) {
+          setTimeout(() => $docSearch.focus(), 50);
+        }
+      });
+
+      // Click outside -> close dropdown
+      $(document).on('click', function (e) {
+        if (!$(e.target).closest('#docMultiWrap').length) {
+          $multiselectDropdown.addClass('d-none');
+        }
+      });
+
+      // Search filter
+      $docSearch.on('input', function () {
+        const q = $(this).val().toLowerCase();
+        $multiselectList.find('.form-check').each(function () {
+          const txt = $(this).text().toLowerCase();
+          $(this).toggle(txt.indexOf(q) !== -1);
+        });
+      });
+
+      // When a checkbox changes -> update selected panel & count
+      $multiselectList.on('change', 'input.doc-checkbox', function () {
+        const max = parseMax();
+        const checkedCount = $multiselectList.find('input[type="checkbox"]:checked').length;
+        if (checkedCount > max) {
+          $(this).prop('checked', false);
+          alert(`You can select up to ${max} doctors per plan.`);
+          return;
+        }
+        renderSelectedPanel();
+        updateSelectedCount();
+      });
+
+      // Remove from selected via selected panel
+      $selectedList.on('click', '.remove-selected', function () {
+        const id = $(this).data('doc-id');
+        $multiselectList.find(`input.doc-checkbox[data-doc-id="${id}"]`).prop('checked', false).trigger('change');
+      });
+
+      // Clear all selected
+      $clearSelected.on('click', function () {
+        $multiselectList.find('input.doc-checkbox:checked').prop('checked', false).trigger('change');
+      });
+
+      // Reset form to defaults
+      $tourReset.on('click', function (e) {
+        e.preventDefault();
+        // reset selects & inputs (keeps Plan Month default to first option)
+        $planMonthYear.prop('selectedIndex', 0);
+        $('#visitTime').prop('selectedIndex', 0);
+        $multiselectList.find('input.doc-checkbox').prop('checked', false);
+        $totalAssigned.val(120);
+        $consolidatedRemarks.val('');
+        $multiselectLabel.text('Select Doctors*');
+        renderSelectedPanel();
+        updateSelectedCount();
+      });
+
+      // Submit: validate & gather payload
+      $tourSubmit.on('click', function (e) {
+        e.preventDefault();
+
+        const payload = {};
+        payload.planMonth = $planMonthYear.val();
+        payload.visitTime = $('#visitTime').val();
+        payload.maxPerPlan = parseMax();
+        payload.totalAssigned = parseInt($totalAssigned.val(), 10) || 0;
+        payload.selectedDocs = [];
+        $multiselectList.find('input.doc-checkbox:checked').each(function () {
+          payload.selectedDocs.push({
+            id: $(this).data('doc-id'),
+            name: $(this).data('doc-name'),
+            meta: $(this).data('doc-meta')
+          });
+        });
+        payload.remarks = $consolidatedRemarks.val().trim();
+
+        // Basic validation
+        if (!payload.planMonth) {
+          alert('Please select Plan Month.');
+          return;
+        }
+        if (isNaN(payload.totalAssigned) || payload.totalAssigned <= 0) {
+          alert('Please enter a valid Total Assigned number greater than 0.');
+          return;
+        }
+        if (payload.selectedDocs.length === 0) {
+          alert('Please select at least one doctor/chemist.');
+          return;
+        }
+        if (!payload.remarks) {
+          if (!confirm('No consolidated remarks provided. Submit without remarks?')) {
+            return;
+          }
+        }
+
+        // Example: show payload (replace with AJAX)
+        console.log('Prepared payload for submission:', payload);
+
+        // Example AJAX (uncomment & adapt URL)
+        /*
+        $.ajax({
+          url: '/api/tour-plans', // change to your endpoint
+          method: 'POST',
+          data: JSON.stringify(payload),
+          contentType: 'application/json',
+          success: function(res) {
+            alert('Plan submitted successfully.');
+            // optionally reset or show server response
+          },
+          error: function(xhr) {
+            alert('Submit failed: ' + (xhr.responseText || xhr.statusText));
+          }
+        });
+        */
+
+        alert('Plan validated and ready to submit. Check console for payload.');
+      });
+
+      /* -------------------------
+         UI sync: keep label updated
+         -------------------------*/
+      // update label depending on selection count
+      const observer = new MutationObserver(function () {
+        const cnt = $multiselectList.find('input:checked').length;
+        $multiselectLabel.text(cnt > 0 ? `${cnt} selected` : 'Select Doctors*');
+      });
+      observer.observe($multiselectList[0], { childList: true, subtree: true });
+
+      /* -------------------------
+         Init everything
+         -------------------------*/
+      initPlanMonths(12);
+      buildDoctorList(sampleDoctors);
+      renderSelectedPanel();
+      updateSelectedCount();
+    });
+  </script>
+
+
+</body>
+
+</html>
