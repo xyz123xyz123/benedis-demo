@@ -47,8 +47,9 @@
               </a>
               <div id="appointmentsSub" class="collapse">
                 <ul class="sub-nav">
-                  <li><a href="tour-planner.html">Add Tour Plan</a></li>
-                  <li><a href="#">View Tour Plan</a></li>
+                  <li><a href="add-tour-planner.html">Add Tour Plan</a></li>
+                  <li><a href="view-tour-planner.html">View All Tour Plans</a></li>
+                  <li><a href="#">Submit DCR Report</a></li>
                 </ul>
               </div>
             </li>
@@ -315,28 +316,29 @@
          -------------------------*/
       // Replace this sampleDoctors array with an AJAX call to load real doctors.
       const sampleDoctors = [
-        { id: 1,  name: "Dr. A. Sharma",      meta: "Cardiologist" },
-        { id: 2,  name: "Dr. B. Verma",       meta: "Dermatologist" },
-        { id: 3,  name: "Dr. C. Singh",       meta: "General Physician" },
-        { id: 4,  name: "Dr. D. Rao",         meta: "Pediatrician" },
-        { id: 5,  name: "Dr. E. Patel",       meta: "Orthopedic" },
-        { id: 6,  name: "Dr. F. Kumar",       meta: "ENT" },
-        { id: 7,  name: "Dr. G. Joshi",       meta: "Psychiatrist" },
-        { id: 8,  name: "Dr. H. Kapoor",      meta: "Oncologist" },
-        { id: 9,  name: "Dr. I. Mehra",       meta: "Endocrinologist" },
-        { id: 10, name: "Dr. J. Nair",        meta: "Neurologist" },
-        
-        { id: 11, name: "Dr. K. Reddy",       meta: "Nephrologist" },
-        { id: 12, name: "Dr. L. Chatterjee",  meta: "Gastroenterologist" },
-        { id: 13, name: "Dr. M. Saxena",      meta: "Pulmonologist" },
-        { id: 14, name: "Dr. N. Dutta",       meta: "Rheumatologist" },
-        { id: 15, name: "Dr. O. Thomas",      meta: "Urologist" },
-        { id: 16, name: "Dr. P. Banerjee",    meta: "Hematologist" },
-        { id: 17, name: "Dr. Q. Fernandes",   meta: "Plastic Surgeon" },
-        { id: 18, name: "Dr. R. Kulkarni",    meta: "Eye Specialist" },
-        { id: 19, name: "Dr. S. Gupta",       meta: "Dentist" },
-        { id: 20, name: "Dr. T. Abraham",     meta: "Radiologist" }
+        { id: 1,  name: "Dr. Arvind Sharma",        meta: "Cardiologist" },
+        { id: 2,  name: "Dr. Bhavya Verma",         meta: "Dermatologist" },
+        { id: 3,  name: "Dr. Chetan Singh",         meta: "General Physician" },
+        { id: 4,  name: "Dr. Devendra Rao",         meta: "Pediatrician" },
+        { id: 5,  name: "Dr. Eshan Patel",          meta: "Orthopedic" },
+        { id: 6,  name: "Dr. Farhan Kumar",         meta: "ENT Specialist" },
+        { id: 7,  name: "Dr. Gaurav Joshi",         meta: "Psychiatrist" },
+        { id: 8,  name: "Dr. Harsh Kapoor",         meta: "Oncologist" },
+        { id: 9,  name: "Dr. Ishaan Mehra",         meta: "Endocrinologist" },
+        { id: 10, name: "Dr. Jitin Nair",           meta: "Neurologist" },
+
+        { id: 11, name: "Dr. Kiran Reddy",          meta: "Nephrologist" },
+        { id: 12, name: "Dr. Lokesh Chatterjee",    meta: "Gastroenterologist" },
+        { id: 13, name: "Dr. Manish Saxena",        meta: "Pulmonologist" },
+        { id: 14, name: "Dr. Nirmal Dutta",         meta: "Rheumatologist" },
+        { id: 15, name: "Dr. Omesh Thomas",         meta: "Urologist" },
+        { id: 16, name: "Dr. Pranav Banerjee",      meta: "Hematologist" },
+        { id: 17, name: "Dr. Quentin Fernandes",    meta: "Plastic Surgeon" },
+        { id: 18, name: "Dr. Rhea Kulkarni",        meta: "Eye Specialist" },
+        { id: 19, name: "Dr. Shubham Gupta",        meta: "Dentist" },
+        { id: 20, name: "Dr. Tarun Abraham",        meta: "Radiologist" }
       ];
+
 
 
       const $planMonthYear = $('#planMonthYear');
