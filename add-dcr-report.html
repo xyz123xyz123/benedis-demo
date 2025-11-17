@@ -155,68 +155,74 @@
             <nav aria-label="breadcrumb" class="w-100">
               <ol class="breadcrumb mb-0 bg-transparent p-0">
                 <li class="breadcrumb-item "><i class="fa-solid fa-house align-content-center"></i></li>
-                <li class="breadcrumb-item active">View Tour Plan</li>
+                <li class="breadcrumb-item active">Add Dcr Report</li>
               </ol>
             </nav>
           </div>
 
+          <div class="form-group">
+            <!-- <label class="font-weight-600">Doctor & Products*</label> -->
 
+            <table class="table table-bordered" id="doctorProductTable">
+              <thead>
+                <tr>
+                  <th width="35%">Doctor</th>
+                  <th width="20%">Product 1</th>
+                  <th width="20%">Product 2</th>
+                  <th width="20%">Product 3</th>
+                  <th width="5%">#</th>
+                </tr>
+              </thead>
+
+              <tbody id="doctorProductBody">
+                <tr>
+                  <td>
+                    <select class="form-control form-control-sm doctorSelect">
+                      <option value="">Select Doctor</option>
+                      <option>Dr. Manisha</option>
+                      <option>Dr. A.K. Trivedi</option>
+                      <option>Dr. Ramesh</option>
+                      <option>Dr. Priya</option>
+                    </select>
+                  </td>
+
+                  <td><select class="form-control form-control-sm productSelect">
+                      <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
+                      <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
+                  </select></td>
+
+                  <td><select class="form-control form-control-sm productSelect">
+                      <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
+                      <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
+                  </select></td>
+
+                  <td><select class="form-control form-control-sm productSelect">
+                      <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
+                      <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
+                  </select></td>
+
+                  <td class="text-center">
+                    <button type="button" class="btn btn-sm btn-danger removeRow">–</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Add Row Button (Common at bottom) -->
+            <div class="text-right mb-3">
+              <button type="button" class="btn btn-success btn-sm" id="addDoctorRow">+ Add Doctor</button>
+            </div>
+
+            <!-- Save / Cancel Buttons -->
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-secondary btn-sm mr-2" id="cancelDoctorPlan">Cancel</button>
+              <button type="button" class="btn btn-primary btn-sm" id="saveDoctorPlan">Save</button>
+            </div>
+          </div>
 
           <!-- Empty content area (placeholder) -->
           <div class="content-area mt-4">
             <!-- Put charts / tables here -->
-
-
-            <!-- START: Enhanced Tour Plan Module (Start & End Date) -->
-            <div id="benedis-dashboard-tour" class="w-100">
-              <div class="row">
-
-                <!-- Left Side: Form -->
-                <div class="col-md-12">
-                  <table class="table table-bordered table-striped mt-4">
-                    <thead class="thead-primary">
-                      <tr>
-                        <th>Plan Month</th>
-                        <th>Visit Time</th>
-                        <th>Total Assigned</th>
-                        <th>Remarks</th>
-                        <th>Submitted Timestamp</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td id="tbl_planMonth">Dec, 2025</td>
-                        <td id="tbl_visitTime">Morning</td>
-                        <td id="tbl_selectedDoctors">
-                          <div style="max-height: 120px; overflow-y: auto;">
-                            • Dr. Arvind Sharma – Cardiologist<br>
-                            • Dr. Bhavya Verma – Dermatologist<br>
-                            • Dr. Chetan Singh – General Physician<br>
-                          </div>
-                        </td>
-
-
-                        <td id="tbl_remarks">
-                          Monthly plan summary and doctor visits.
-                        </td>
-
-                        <td id="tbl_submittedTime">2025-11-17 04:30 PM</td>
-
-                        <td class="text-center">
-                          <button class="btn btn-sm btn-success">
-                            Submit DCR Report
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-
-                </div>
-              </div>
-            </div>
           </div>
 
           <!-- Footer -->
@@ -237,27 +243,63 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script>
-    // set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // Add new row
+  $("#addDoctorRow").on("click", function () {
+  let row = `
+    <tr>
+      <td>
+        <select class="form-control form-control-sm doctorSelect">
+          <option value="">Select Doctor</option>
+          <option>Dr. Manisha</option>
+          <option>Dr. A.K. Trivedi</option>
+          <option>Dr. Ramesh</option>
+          <option>Dr. Priya</option>
+        </select>
+      </td>
 
-    // Sidebar toggle (scoped to benedis-dashboard)
-    (function () {
-      var $menuToggle = document.querySelector('#benedis-dashboard #menu-toggle');
-      var $sidebar = document.querySelector('#benedis-dashboard #sidebar');
-      var $page = document.querySelector('#benedis-dashboard #page-content-wrapper');
+      <td><select class="form-control form-control-sm productSelect">
+          <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
+          <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
+      </select></td>
 
-      $menuToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        $sidebar.classList.toggle('collapsed');
-        $page.classList.toggle('expanded');
-      });
-    })();
+      <td><select class="form-control form-control-sm productSelect">
+          <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
+          <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
+      </select></td>
 
+      <td><select class="form-control form-control-sm productSelect">
+          <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
+          <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
+      </select></td>
 
-  </script>
+      <td class="text-center">
+        <button type="button" class="btn btn-sm btn-danger removeRow">–</button>
+      </td>
+    </tr>
+  `;
 
+  $("#doctorProductBody").append(row);
+});
+
+// Remove row
+$(document).on("click", ".removeRow", function () {
+  $(this).closest("tr").remove();
+});
+
+// Save button
+$("#saveDoctorPlan").on("click", function () {
+  alert("Doctor plan saved successfully!");
+});
+
+// Cancel button
+$("#cancelDoctorPlan").on("click", function () {
+  if (confirm("Are you sure you want to cancel?")) {
+    $("#doctorProductBody").html(""); // Clear table
+  }
+});
+
+</script>
 
 </body>
-
 </html>
