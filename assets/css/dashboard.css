@@ -116,68 +116,281 @@
 }
 
 
-/* Tour planner module (namespaced under #benedis-dashboard) */
-#benedis-dashboard-tour .tour-panel,
-#benedis-dashboard-tour .selected-panel {
-  background: #fafafa;
-  border: 1px solid #eee;
-  border-radius: 6px;
-  min-height: 260px;
+/* ====== Tour planner module (namespaced under #benedis-dashboard-tour) ====== */
+/* Theme vars for quick adjustments */
+#benedis-dashboard-tour {
+  --bg: #fafafa;
+  --panel-border: #eee;
+  --panel-radius: 8px;
+  --control-bg: #fff;
+  --muted: #6c757d;
+  --accent: #3366ff;
+  --muted-border: #e9e9ee;
+  --soft-shadow: 0 8px 20px rgba(16,18,20,0.06);
+  --chip-bg: #f1f4ff;
+  --danger: #b03030;
+  --control-height: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
 }
 
-/* multi-select button */
+/* Panels */
+#benedis-dashboard-tour .tour-panel,
+#benedis-dashboard-tour .selected-panel {
+  background: var(--bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--panel-radius);
+  min-height: 260px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Form labels */
+#benedis-dashboard-tour .font-weight-600 {
+  font-weight: 600;
+  font-size: 0.92rem;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* Form controls (consistent heights & spacing) */
+#benedis-dashboard-tour .form-control,
+#benedis-dashboard-tour input[type="month"],
+#benedis-dashboard-tour select,
+#benedis-dashboard-tour textarea {
+  height: var(--control-height);
+  min-height: var(--control-height);
+  padding: 0.45rem 0.625rem;
+  border-radius: 6px;
+  border: 1px solid #d6d8df;
+  background: var(--control-bg);
+  box-sizing: border-box;
+  font-size: 0.93rem;
+  transition: box-shadow .15s ease, border-color .15s ease, transform .06s ease;
+}
+
+/* textarea specific */
+#benedis-dashboard-tour textarea.form-control {
+  min-height: 84px;
+  height: auto;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+/* focus / accessible states */
+#benedis-dashboard-tour .form-control:focus,
+#benedis-dashboard-tour .multiselect-btn:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 4px 18px rgba(51,102,255,0.12);
+}
+
+/* readonly numeric inputs */
+#benedis-dashboard-tour input[readonly] {
+  background: #eaeaea;
+  color: #333;
+  cursor: default;
+}
+
+/* ===== Multi-select button ===== */
 #benedis-dashboard-tour .multiselect-btn {
   width: 100%;
   text-align: left;
   padding: 10px 12px;
   border: 1px solid #d6d8df;
-  background: #fff;
+  background: var(--control-bg);
   border-radius: 6px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  cursor:pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+  height: var(--control-height);
+  transition: background .12s ease, transform .06s ease;
+}
+#benedis-dashboard-tour .multiselect-btn .fa {
+  font-size: 0.92rem;
+  opacity: 0.85;
+}
+#benedis-dashboard-tour .multiselect-btn:hover { transform: translateY(-1px); }
+#benedis-dashboard-tour .multiselect-btn[aria-expanded="true"] { background: #fbfcff; }
+
+/* dropdown (hidden by default) */
+#benedis-dashboard-tour .multiselect-dropdown {
+  margin-top: 8px;
+  border: 1px solid var(--muted-border);
+  background: var(--control-bg);
+  border-radius: 8px;
+  box-shadow: var(--soft-shadow);
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  transition: opacity .12s ease, transform .12s ease;
 }
 
-/* dropdown */
-#benedis-dashboard-tour .multiselect-dropdown {
-  margin-top:6px;
-  border:1px solid #e9e9ee;
-  background:#fff;
-  border-radius:6px;
-  box-shadow:0 8px 20px rgba(16,18,20,0.06);
+/* Use an 'open' modifier for visible state (JS should toggle .open) */
+#benedis-dashboard-tour .multiselect-dropdown:not(.open) {
+  display: none;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+#benedis-dashboard-tour .multiselect-dropdown.open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* search inside dropdown */
-#benedis-dashboard-tour .multiselect-search { border-bottom:1px solid #f2f3f6; }
+#benedis-dashboard-tour .multiselect-search {
+  padding: .45rem .5rem;
+  border-bottom: 1px solid #f2f3f6;
+}
+#benedis-dashboard-tour .multiselect-search input.form-control {
+  height: 36px;
+  border-radius: 6px;
+}
 
 /* list */
 #benedis-dashboard-tour .multiselect-list {
-  max-height:320px;
-  overflow:auto;
+  max-height: 320px;
+  overflow: auto;
+  padding: 6px;
+  box-sizing: border-box;
 }
 
 /* each item */
-#benedis-dashboard-tour .multiselect-item{
-  display:flex; align-items:center; padding:8px; border-radius:4px;
+#benedis-dashboard-tour .multiselect-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  gap: 8px;
+  transition: background .08s ease;
 }
-#benedis-dashboard-tour .multiselect-item:hover{ background:#f7f8fb; }
-#benedis-dashboard-tour .multiselect-item label{ cursor:pointer; margin-bottom:0; margin-left:8px; flex:1; }
+#benedis-dashboard-tour .multiselect-item:hover {
+  background: #f7f8fb;
+}
+#benedis-dashboard-tour .multiselect-item label {
+  cursor: pointer;
+  margin-bottom: 0;
+  margin-left: 8px;
+  flex: 1;
+  font-size: 0.92rem;
+}
 
-/* selected list styling */
-#benedis-dashboard-tour .selected-list{
-  min-height:160px; background:#fff; border-radius:4px; border:1px solid #f0f0f3; overflow:auto;
-  padding:10px;
+/* checked item visual */
+#benedis-dashboard-tour .multiselect-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
 }
+
+/* ===== Selected list styling ===== */
+#benedis-dashboard-tour .selected-list {
+  min-height: 160px;
+  background: var(--control-bg);
+  border-radius: 6px;
+  border: 1px solid #f0f0f3;
+  overflow: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* chip / pill */
 #benedis-dashboard-tour .chip {
-  display:inline-flex; align-items:center; gap:8px; margin:6px; padding:6px 10px; background:#f1f4ff; border-radius:18px; font-size:13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 6px 6px 0;
+  padding: 6px 10px;
+  background: var(--chip-bg);
+  border-radius: 18px;
+  font-size: 13px;
+  vertical-align: middle;
+  box-shadow: 0 1px 0 rgba(17,24,39,0.02);
 }
-#benedis-dashboard-tour .chip .remove { cursor:pointer; color:#b03030; margin-left:6px; }
-
-/* small text, readonly numeric */
-#benedis-dashboard-tour input[readonly] { background:#eaeaea; }
-
-/* responsive */
-@media (max-width:768px){
-  #benedis-dashboard-tour .multiselect-list{ max-height:200px; }
+#benedis-dashboard-tour .chip .remove {
+  cursor: pointer;
+  color: var(--danger);
+  margin-left: 6px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
 }
+
+/* Empty selected-list placeholder */
+#benedis-dashboard-tour .selected-list .text-muted {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* Note / alert area */
+#benedis-dashboard-tour .alert-info.small {
+  background: #f6fbff;
+  border-color: #eaeefb;
+  color: #0b3a66;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+}
+
+/* small helper text */
+#benedis-dashboard-tour .form-text {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+
+/* subtle scrollbar styling for modern browsers */
+#benedis-dashboard-tour .multiselect-list::-webkit-scrollbar,
+#benedis-dashboard-tour .selected-list::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+#benedis-dashboard-tour .multiselect-list::-webkit-scrollbar-thumb,
+#benedis-dashboard-tour .selected-list::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: rgba(17,24,39,0.08);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  #benedis-dashboard-tour .tour-panel,
+  #benedis-dashboard-tour .selected-panel {
+    padding: 0.8rem;
+  }
+  #benedis-dashboard-tour .multiselect-list { max-height: 240px; }
+}
+
+@media (max-width: 768px) {
+  /* stack Visit Time and Select Doctors vertically */
+  #benedis-dashboard-tour .form-row > .form-group {
+    width: 100%;
+    display: block;
+  }
+  #benedis-dashboard-tour .multiselect-btn { height: 44px; }
+  #benedis-dashboard-tour .multiselect-list { max-height: 200px; }
+  #benedis-dashboard-tour .selected-list { min-height: 120px; padding: 8px; }
+}
+
+/* Accessibility helpers (visible focus for keyboard users) */
+#benedis-dashboard-tour .multiselect-btn:focus-visible,
+#benedis-dashboard-tour .form-control:focus-visible {
+  outline: 3px solid rgba(51,102,255,0.12);
+  outline-offset: 2px;
+}
+
+/* Utility: visually-hidden (if needed) */
+#benedis-dashboard-tour .sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+  .doctor-pill { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .doctor-pill .remove-doc { cursor:pointer; font-weight:600; padding-left:8px; }
+  .tour-card { border:1px solid #e6e6e6; border-radius:8px; padding:10px; margin-bottom:8px; background:#fff; }
+  .tour-card .small-muted { font-size:.85rem; color:#666; }
