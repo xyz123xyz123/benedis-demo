@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Benedis Lifescience</title>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Dashboard styles (namespaced) -->
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/appointment.css">
+</head>
+
+<body>
+    <div id="benedis-dashboard">
+        <div class="d-flex" id="wrapper">
+
+            <!-- Sidebar -->
+            <nav id="sidebar" class="bg-white border-right">
+                <div class="sidebar-sticky p-3">
+                    <div class="text-center mb-3">
+                        <div class="avatar-wrapper mb-2">
+                            <!-- replace src below with your uploaded image if needed -->
+                            <img src="assets/images/doctor-profile-img.jpg" alt="avatar" class="avatar-img">
+                        </div>
+                        <h6 class="mb-0 font-weight-bold">Mr. Mohan Sharma</h6>
+                        <div class="role-badge mt-2">BE - Business Executives</div>
+                    </div>
+
+                    <ul class="nav flex-column sidebar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.html"><i class="fa-solid fa-table mr-2"></i> Dashboard</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#appointmentsSub" data-toggle="collapse"
+                                aria-expanded="false">
+                                <i class="fa-regular fa-calendar-check mr-2"></i> Tour Plan <i
+                                    class="fa fa-chevron-down float-right"></i>
+                            </a>
+                            <div id="appointmentsSub" class="collapse">
+                                <ul class="sub-nav">
+                                    <li><a href="add-tour-planner.html">Add Tour Plan</a></li>
+                                    <li><a href="view-tour-planner.html">View All Tour Plans</a></li>
+                                    <li><a href="add-dcr-report.html">Submit DCR Report</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="appointment_list.html"><i class="fa-solid fa-list mr-2"></i> View All Appointments</a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link collapsed" href="#doctorsSub" data-toggle="collapse"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-user-doctor mr-2"></i> Doctors <i
+                                    class="fa fa-chevron-down float-right"></i>
+                            </a>
+                            <div id="doctorsSub" class="collapse">
+                                <ul class="sub-nav">
+                                    <li><a href="#">All Doctors</a></li>
+                                    <li><a href="#">Add Doctor</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#reportingSub" data-toggle="collapse"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-triangle-exclamation mr-2"></i> False Reporting <i
+                                    class="fa fa-chevron-down float-right"></i>
+                            </a>
+                            <div id="reportingSub" class="collapse">
+                                <ul class="sub-nav">
+                                    <li><a href="#">List</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#leaveSub" data-toggle="collapse" aria-expanded="false">
+                                <i class="fa-regular fa-clock mr-2"></i> Apply Leave <i
+                                    class="fa fa-chevron-down float-right"></i>
+                            </a>
+                            <div id="leaveSub" class="collapse">
+                                <ul class="sub-nav">
+                                    <li><a href="#">Apply</a></li>
+                                    <li><a href="#">My Leaves</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#expenseSub" data-toggle="collapse"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-wallet mr-2"></i> Expense <i
+                                    class="fa fa-chevron-down float-right"></i>
+                            </a>
+                            <div id="expenseSub" class="collapse">
+                                <ul class="sub-nav">
+                                    <li><a href="#">Add Expense</a></li>
+                                    <li><a href="#">Expense List</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-calendar-day mr-2"></i> Holidays</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </nav>
+            <!-- /#sidebar -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper" class="w-100">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white border-bottom topbar">
+                    <button class="btn btn-link" id="menu-toggle"><i class="fa fa-bars"></i></button>
+
+                    <div class="navbar-brand ml-2">Benedis Lifescience</div>
+
+                    <ul class="navbar-nav ml-auto align-items-center">
+                        <li class="nav-item mr-3 d-none d-md-block">
+                            <a class="nav-link small text-muted" href="#"><i class="fa-solid fa-house mr-2"></i>
+                                View Appointment</a>
+                        </li>
+
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="#"><i class="fa-regular fa-bell"></i></a>
+                        </li>
+                        <li class="nav-item dropdown profile-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="profileMenu" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-regular fa-user"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right shadow-sm" aria-labelledby="profileMenu">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa-regular fa-id-badge mr-2"></i> Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger font-weight-bold" href="index.html">
+                                    <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <!-- Main container -->
+                <div class="container-fluid main-container p-4">
+                    <!-- Breadcrumb / header -->
+                    <div class="d-flex align-items-center mb-3">
+                        <nav aria-label="breadcrumb" class="w-100">
+                            <ol class="breadcrumb mb-0 bg-transparent p-0">
+                                <li class="breadcrumb-item "><i class="fa-solid fa-house align-content-center"></i></li>
+                                <li class="breadcrumb-item active">View Appointment </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    
+
+                    <!-- Empty content area (placeholder) -->
+                    <div class="content-area mt-4">     
+                        <!-- TABLE LISTING -->
+                        <div class="table-card">
+                            <!-- FILTER SECTION -->
+                            <div class="filter-row">
+                                <div>
+                                    <label>From Month :</label>
+                                    <input type="month" id="fromDate">
+                                </div>
+                                <div>
+                                    <label>To Month :</label>
+                                    <input type="month" id="toDate">
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary filter-btn" onclick="filterData()">Filter</button>
+                                </div>
+                            </div>
+                            <br>
+                            <table id="doctorTable">
+                                <tr class="header-row">
+                                    <!-- <td colspan="1"><b>NAME :</b></td>
+                                    <td colspan="3">ANMOL SHARMA</td> -->
+                                    <td colspan="1"><b>HQ :</b></td>
+                                    <td colspan="3">KANPUR 1</td>
+                                    <td colspan="6" class="text-right"><b>DATE :</b> November, 2025 To December, 2025</td>
+                                </tr>
+                            </table>
+
+                            <table id="doctorTable">
+                                <tr>
+                                    <th class="text-center">S.NO</th>
+                                    <th class="text-center">DR. NAME</th>
+                                    <th class="text-center">Product List</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Remark</th>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td>Dr. Manisha</td>
+                                    <td>Paracetamol 500mg, Amoxicillin 500mg, Azithromycin 250mg</td>
+                                    <td class="text-center">Approved</td>
+                                    <td class="text-center">Okay for testing</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center">2</td>
+                                    <td>Dr. A.K. Trivedi</td>
+                                    <td>Levocetirizine 5mg, Amoxicillin 500mg</td>
+                                    <td class="text-center">Not Approved</td>
+                                    <td class="text-center">Okay for testing</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center">3</td>
+                                    <td>Dr. Ramesh</td>
+                                    <td>Calcium + Vitamin D3, Amoxicillin 500mg, Amlodipine 5mg</td>
+                                    <td class="text-center">Approved</td>
+                                    <td class="text-center">Okay for testing</td>
+                                </tr>
+
+                                
+                                
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                        
+                    
+
+                    <!-- Footer -->
+                    <footer class="footer mt-5 py-3 text-center text-muted">
+                        © <span id="year"></span> Benedis Lifescience — All Rights Reserved
+                    </footer>
+                </div>
+                <!-- /Main container -->
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+    </div>
+
+    <!-- JS (Bootstrap 4) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Sidebar toggle (scoped to benedis-dashboard)
+        (function () {
+            var $menuToggle = document.querySelector('#benedis-dashboard #menu-toggle');
+            var $sidebar = document.querySelector('#benedis-dashboard #sidebar');
+            var $page = document.querySelector('#benedis-dashboard #page-content-wrapper');
+
+            $menuToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                $sidebar.classList.toggle('collapsed');
+                $page.classList.toggle('expanded');
+            });
+        })();
+
+    </script>
+</body>
+
+</html>
