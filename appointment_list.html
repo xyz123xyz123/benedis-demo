@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Benedis Lifescience — Dashboard</title>
+    <title>Benedis Lifescience</title>
 
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
@@ -17,6 +17,7 @@
 
     <!-- Dashboard styles (namespaced) -->
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/appointment.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
                                 <ul class="sub-nav">
                                     <li><a href="add-tour-planner.html">Add Tour Plan</a></li>
                                     <li><a href="view-tour-planner.html">View All Tour Plans</a></li>
-                                    <li><a href="add-dcr-report.html">Submit DCR Report</a></li>
+                                    <li><a href="#">Submit DCR Report</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -133,7 +134,7 @@
                     <ul class="navbar-nav ml-auto align-items-center">
                         <li class="nav-item mr-3 d-none d-md-block">
                             <a class="nav-link small text-muted" href="#"><i class="fa-solid fa-house mr-2"></i>
-                                Dashboard</a>
+                                View All Appointments</a>
                         </li>
 
                         <li class="nav-item mr-3">
@@ -166,69 +167,65 @@
                         <nav aria-label="breadcrumb" class="w-100">
                             <ol class="breadcrumb mb-0 bg-transparent p-0">
                                 <li class="breadcrumb-item "><i class="fa-solid fa-house align-content-center"></i></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item active">View All Appointments</li>
                             </ol>
                         </nav>
                     </div>
-
-                    <!-- Cards row -->
-                    <div class="row stat-row">
-                        <div class="col-lg-3 col-md-6 mb-3">
-                            <div class="card stat-card h-100">
-                                <div class="d-flex align-items-center w-100">
-                                    <div class="icon-circle bg-info text-white mr-3"><i
-                                            class="fa-regular fa-calendar-check"></i></div>
-                                    <div class="flex-fill">
-                                        <div class="stat-label">Today Appointments</div>
-                                    </div>
-                                    <div class="stat-value">42</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-3">
-                            <div class="card stat-card h-100">
-                                <div class="d-flex align-items-center w-100">
-                                    <div class="icon-circle bg-danger text-white mr-3"><i
-                                            class="fa-solid fa-wallet"></i></div>
-                                    <div class="flex-fill">
-                                        <div class="stat-label">Total Expenses</div>
-                                    </div>
-                                    <div class="stat-value">₹80,000</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-3">
-                            <div class="card stat-card h-100">
-                                <div class="d-flex align-items-center w-100">
-                                    <div class="icon-circle bg-purple text-white mr-3"><i
-                                            class="fa-solid fa-umbrella-beach"></i></div>
-                                    <div class="flex-fill">
-                                        <div class="stat-label">Pending Leaves</div>
-                                    </div>
-                                    <div class="stat-value">18</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-3">
-                            <div class="card stat-card h-100">
-                                <div class="d-flex align-items-center w-100">
-                                    <div class="icon-circle bg-success text-white mr-3"><i
-                                            class="fa-solid fa-house-chimney"></i></div>
-                                    <div class="flex-fill">
-                                        <div class="stat-label">Upcoming Holidays</div>
-                                    </div>
-                                    <div class="stat-value">4</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <!-- Empty content area (placeholder) -->
-                    <div class="content-area mt-4">
-                        <!-- Put charts / tables here -->
+                    <div class="content-area mt-4">                        
+                        <div class="grid">
+                            <a href="view_appointment.html" class="a-tag">
+                                <div class="card">
+                                    <div class="title">BE - ABHINAV SHARMA</div>
+                                    <div class="text" title="Headquarters"><b>HQ :</b> Kanpur 1</div>
+                                </div>
+                            </a>
+
+                            <a href="view_appointment.html" class="a-tag">
+                                <div class="card">
+                                    <div class="title">BE - MANOJ VERMA</div>
+                                    <div class="text" title="Headquarters"><b>HQ :</b> Kanpur 2</div>
+                                </div>
+                            </a>
+
+                            <a href="view_appointment.html" class="a-tag">
+                                <div class="card">
+                                    <div class="title">BE - KANHAIYA CHAUHAN</div>
+                                    <div class="text" title="Headquarters"><b>HQ :</b> Agra</div>
+                                </div>
+                            </a>
+
+                            <a href="view_appointment.html" class="a-tag">
+                                <div class="card">
+                                    <div class="title">BE - ANMOL SHARMA</div>
+                                    <div class="text" title="Headquarters"><b>HQ :</b> Kanpur 1</div>
+                                </div>
+                            </a>
+
+                            <a href="view_appointment.html" class="a-tag">
+                                <div class="card">
+                                    <div class="title">BE - SHUBHAM YADAV</div>
+                                    <div class="text" title="Headquarters"><b>HQ :</b> Kanpur 2</div>
+                                </div>
+                            </a>
+
+                            <a href="view_appointment.html" class="a-tag">
+                                <div class="card">
+                                    <div class="title">BE - RAGHVENDRA PANDEY</div>
+                                    <div class="text" title="Headquarters"><b>HQ :</b> Aligarh</div>
+                                </div>
+                            </a>
+
+                            <a href="view_appointment.html" class="a-tag">
+                                <div class="card">
+                                    <div class="title">BE - ABHISEK GUPTA</div>
+                                    <div class="text" title="Headquarters"><b>HQ :</b> Farukhabad</div>
+                                </div>
+                            </a>
+
+                        </div>
                     </div>
 
                     <!-- Footer -->
