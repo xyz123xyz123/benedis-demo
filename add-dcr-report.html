@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Benedis Lifescience — Dashboard</title>
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- Select2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
   <!-- Bootstrap 4 -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
@@ -166,10 +176,9 @@
             <table class="table table-bordered" id="doctorProductTable">
               <thead>
                 <tr>
-                  <th width="35%">Doctor</th>
-                  <th width="20%">Product 1</th>
-                  <th width="20%">Product 2</th>
-                  <th width="20%">Product 3</th>
+                  <th width="40%">Doctor</th>
+                  <th width="40%">Products (Multi Select)</th>
+                  <th width="15%">Visit</th>
                   <th width="5%">#</th>
                 </tr>
               </thead>
@@ -186,20 +195,41 @@
                     </select>
                   </td>
 
-                  <td><select class="form-control form-control-sm productSelect">
-                      <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
-                      <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
-                  </select></td>
+                  <!-- MULTI SELECT PRODUCTS -->
+                  <td>
+                    <select class="form-control form-control-sm productSelect" multiple="multiple">
+                      <option>Paracetamol 500mg</option>
+                      <option>Amoxicillin 500mg</option>
+                      <option>Azithromycin 250mg</option>
+                      <option>Cefixime 200mg</option>
+                      <option>Pantoprazole 40mg</option>
+                      <option>Omeprazole 20mg</option>
+                      <option>Cetirizine 10mg</option>
+                      <option>Levocetirizine 5mg</option>
+                      <option>Metformin 500mg</option>
+                      <option>Atorvastatin 10mg</option>
+                      <option>Diclofenac 50mg</option>
+                      <option>Ibuprofen 400mg</option>
+                      <option>Multivitamin Tablets</option>
+                      <option>Calcium + Vitamin D3</option>
+                      <option>ORS Solution</option>
+                      <option>Iron Folic Acid Tablets</option>
+                      <option>Losartan 50mg</option>
+                      <option>Amlodipine 5mg</option>
+                      <option>Montelukast + Levocetirizine</option>
+                      <option>Dolo 650</option>
+                    </select>
+                  </td>
 
-                  <td><select class="form-control form-control-sm productSelect">
-                      <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
-                      <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
-                  </select></td>
 
-                  <td><select class="form-control form-control-sm productSelect">
-                      <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
-                      <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
-                  </select></td>
+                  <!-- NEW Visit / Not Visit COLUMN -->
+                  <td>
+                    <select class="form-control form-control-sm visitSelect">
+                      <option value="">Select</option>
+                      <option>Visit</option>
+                      <option>Not Visit</option>
+                    </select>
+                  </td>
 
                   <td class="text-center">
                     <button type="button" class="btn btn-sm btn-danger removeRow">–</button>
@@ -216,7 +246,7 @@
             <!-- Save / Cancel Buttons -->
             <div class="d-flex justify-content-end">
               <button type="button" class="btn btn-secondary btn-sm mr-2" id="cancelDoctorPlan">Cancel</button>
-              <button type="button" class="btn btn-primary btn-sm" id="saveDoctorPlan">Save</button>
+              <button type="button" class="btn btn-primary btn-sm" id="saveDoctorPlan">Submit Dcr Report</button>
             </div>
           </div>
 
@@ -239,13 +269,26 @@
   </div>
 
   <!-- JS (Bootstrap 4) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
   // Add new row
-  $("#addDoctorRow").on("click", function () {
+// Add new row
+function initSelect2() {
+  $('.productSelect').select2({
+    width: "100%",
+    placeholder: "Select Products",
+    allowClear: true
+  });
+}
+
+
+// Initialize for first row
+initSelect2();
+
+// Initialize for added rows
+$("#addDoctorRow").on("click", function () {
   let row = `
     <tr>
       <td>
@@ -258,29 +301,36 @@
         </select>
       </td>
 
-      <td><select class="form-control form-control-sm productSelect">
-          <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
-          <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
-      </select></td>
+      <td>
+        <select class="form-control form-control-sm productSelect" multiple="multiple">
+          <option>P1</option>
+          <option>P2</option>
+          <option>P3</option>
+          <option>P4</option>
+          <option>P5</option>
+          <option>P6</option>
+          <option>P7</option>
+        </select>
+      </td>
 
-      <td><select class="form-control form-control-sm productSelect">
-          <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
-          <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
-      </select></td>
-
-      <td><select class="form-control form-control-sm productSelect">
-          <option value="">Select</option><option>P1</option><option>P2</option><option>P3</option>
-          <option>P4</option><option>P5</option><option>P6</option><option>P7</option>
-      </select></td>
+      <td>
+        <select class="form-control form-control-sm visitSelect">
+          <option value="">Select</option>
+          <option>Visit</option>
+          <option>Not Visit</option>
+        </select>
+      </td>
 
       <td class="text-center">
         <button type="button" class="btn btn-sm btn-danger removeRow">–</button>
       </td>
     </tr>
   `;
-
+  
   $("#doctorProductBody").append(row);
+  initSelect2(); // apply Select2 to new dropdown
 });
+
 
 // Remove row
 $(document).on("click", ".removeRow", function () {
