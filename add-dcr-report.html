@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Benedis Lifescience — Dashboard</title>
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- Select2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
   <!-- Bootstrap 4 -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
@@ -37,7 +47,7 @@
 
           <ul class="nav flex-column sidebar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="dashboard.html"><i class="fa-solid fa-table mr-2"></i> Dashboard</a>
+              <a class="nav-link active" href="#"><i class="fa-solid fa-table mr-2"></i> Dashboard</a>
             </li>
 
             <li class="nav-item">
@@ -55,10 +65,6 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="appointment_list.html"><i class="fa-solid fa-list mr-2"></i> View All Appointments</a>
-            </li>
-
-            <!-- <li class="nav-item">
               <a class="nav-link collapsed" href="#doctorsSub" data-toggle="collapse" aria-expanded="false">
                 <i class="fa-solid fa-user-doctor mr-2"></i> Doctors <i class="fa fa-chevron-down float-right"></i>
               </a>
@@ -108,7 +114,7 @@
 
             <li class="nav-item">
               <a class="nav-link" href="#"><i class="fa-solid fa-calendar-day mr-2"></i> Holidays</a>
-            </li> -->
+            </li>
           </ul>
         </div>
       </nav>
@@ -159,68 +165,94 @@
             <nav aria-label="breadcrumb" class="w-100">
               <ol class="breadcrumb mb-0 bg-transparent p-0">
                 <li class="breadcrumb-item "><i class="fa-solid fa-house align-content-center"></i></li>
-                <li class="breadcrumb-item active">View Tour Plan</li>
+                <li class="breadcrumb-item active">Submit Dcr Report</li>
               </ol>
             </nav>
           </div>
 
+          <div class="form-group">
+            <!-- <label class="font-weight-600">Doctor & Products*</label> -->
 
+            <table class="table table-bordered" id="doctorProductTable">
+              <thead>
+                <tr>
+                  <th width="40%">Doctor</th>
+                  <th width="40%">Products (Multi Select)</th>
+                  <th width="15%">Visit</th>
+                  <th width="5%">#</th>
+                </tr>
+              </thead>
+
+              <tbody id="doctorProductBody">
+                <tr>
+                  <td>
+                    <select class="form-control form-control-sm doctorSelect">
+                      <option value="">Select Doctor</option>
+                      <option>Dr. Manisha</option>
+                      <option>Dr. A.K. Trivedi</option>
+                      <option>Dr. Ramesh</option>
+                      <option>Dr. Priya</option>
+                    </select>
+                  </td>
+
+                  <!-- MULTI SELECT PRODUCTS -->
+                  <td>
+                    <select class="form-control form-control-sm productSelect" multiple="multiple">
+                      <option>Paracetamol 500mg</option>
+                      <option>Amoxicillin 500mg</option>
+                      <option>Azithromycin 250mg</option>
+                      <option>Cefixime 200mg</option>
+                      <option>Pantoprazole 40mg</option>
+                      <option>Omeprazole 20mg</option>
+                      <option>Cetirizine 10mg</option>
+                      <option>Levocetirizine 5mg</option>
+                      <option>Metformin 500mg</option>
+                      <option>Atorvastatin 10mg</option>
+                      <option>Diclofenac 50mg</option>
+                      <option>Ibuprofen 400mg</option>
+                      <option>Multivitamin Tablets</option>
+                      <option>Calcium + Vitamin D3</option>
+                      <option>ORS Solution</option>
+                      <option>Iron Folic Acid Tablets</option>
+                      <option>Losartan 50mg</option>
+                      <option>Amlodipine 5mg</option>
+                      <option>Montelukast + Levocetirizine</option>
+                      <option>Dolo 650</option>
+                    </select>
+                  </td>
+
+
+                  <!-- NEW Visit / Not Visit COLUMN -->
+                  <td>
+                    <select class="form-control form-control-sm visitSelect">
+                      <option value="">Select</option>
+                      <option>Visit</option>
+                      <option>Not Visit</option>
+                    </select>
+                  </td>
+
+                  <td class="text-center">
+                    <button type="button" class="btn btn-sm btn-danger removeRow">–</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Add Row Button (Common at bottom) -->
+            <div class="text-right mb-3">
+              <button type="button" class="btn btn-success btn-sm" id="addDoctorRow">+ Add Doctor</button>
+            </div>
+
+            <!-- Save / Cancel Buttons -->
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-secondary btn-sm mr-2" id="cancelDoctorPlan">Cancel</button>
+              <button type="button" class="btn btn-primary btn-sm" id="saveDoctorPlan">Submit Dcr Report</button>
+            </div>
+          </div>
 
           <!-- Empty content area (placeholder) -->
           <div class="content-area mt-4">
             <!-- Put charts / tables here -->
-
-
-            <!-- START: Enhanced Tour Plan Module (Start & End Date) -->
-            <div id="benedis-dashboard-tour" class="w-100">
-              <div class="row">
-
-                <!-- Left Side: Form -->
-                <div class="col-md-12">
-                  <table class="table table-bordered table-striped mt-4">
-                    <thead class="thead-primary">
-                      <tr>
-                        <th>Plan Month</th>
-                        <th>Visit Time</th>
-                        <th>Total Assigned</th>
-                        <th>Remarks</th>
-                        <th>Submitted Timestamp</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td id="tbl_planMonth">Dec, 2025</td>
-                        <td id="tbl_visitTime">Morning</td>
-                        <td id="tbl_selectedDoctors">
-                          <div style="max-height: 120px; overflow-y: auto;">
-                            • Dr. Arvind Sharma – Cardiologist<br>
-                            • Dr. Bhavya Verma – Dermatologist<br>
-                            • Dr. Chetan Singh – General Physician<br>
-                          </div>
-                        </td>
-
-
-                        <td id="tbl_remarks">
-                          Monthly plan summary and doctor visits.
-                        </td>
-
-                        <td id="tbl_submittedTime">2025-11-17 04:30 PM</td>
-
-                        <td class="text-center">
-                          <button class="btn btn-sm btn-success">
-                            Submit DCR Report
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-
-                </div>
-              </div>
-            </div>
           </div>
 
           <!-- Footer -->
@@ -237,31 +269,99 @@
   </div>
 
   <!-- JS (Bootstrap 4) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script>
-    // set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Sidebar toggle (scoped to benedis-dashboard)
-    (function () {
-      var $menuToggle = document.querySelector('#benedis-dashboard #menu-toggle');
-      var $sidebar = document.querySelector('#benedis-dashboard #sidebar');
-      var $page = document.querySelector('#benedis-dashboard #page-content-wrapper');
-
-      $menuToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        $sidebar.classList.toggle('collapsed');
-        $page.classList.toggle('expanded');
-      });
-    })();
+<script>
+  // Add new row
+// Add new row
+function initSelect2() {
+  $('.productSelect').select2({
+    width: "100%",
+    placeholder: "Select Products",
+    allowClear: true
+  });
+}
 
 
-  </script>
+// Initialize for first row
+initSelect2();
 
+// Initialize for added rows
+$("#addDoctorRow").on("click", function () {
+  let row = `
+    <tr>
+      <td>
+        <select class="form-control form-control-sm doctorSelect">
+          <option value="">Select Doctor</option>
+          <option>Dr. Manisha</option>
+          <option>Dr. A.K. Trivedi</option>
+          <option>Dr. Ramesh</option>
+          <option>Dr. Priya</option>
+        </select>
+      </td>
+
+      <td>
+        <select class="form-control form-control-sm productSelect" multiple="multiple">
+          <option>Paracetamol 500mg</option>
+          <option>Amoxicillin 500mg</option>
+          <option>Azithromycin 250mg</option>
+          <option>Cefixime 200mg</option>
+          <option>Pantoprazole 40mg</option>
+          <option>Omeprazole 20mg</option>
+          <option>Cetirizine 10mg</option>
+          <option>Levocetirizine 5mg</option>
+          <option>Metformin 500mg</option>
+          <option>Atorvastatin 10mg</option>
+          <option>Diclofenac 50mg</option>
+          <option>Ibuprofen 400mg</option>
+          <option>Multivitamin Tablets</option>
+          <option>Calcium + Vitamin D3</option>
+          <option>ORS Solution</option>
+          <option>Iron Folic Acid Tablets</option>
+          <option>Losartan 50mg</option>
+          <option>Amlodipine 5mg</option>
+          <option>Montelukast + Levocetirizine</option>
+          <option>Dolo 650</option>
+        </select>
+      </td>
+
+      <td>
+        <select class="form-control form-control-sm visitSelect">
+          <option value="">Select</option>
+          <option>Visit</option>
+          <option>Not Visit</option>
+        </select>
+      </td>
+
+      <td class="text-center">
+        <button type="button" class="btn btn-sm btn-danger removeRow">–</button>
+      </td>
+    </tr>`;
+  
+  $("#doctorProductBody").append(row);
+  initSelect2(); // apply Select2 to new dropdown
+});
+
+
+// Remove row
+$(document).on("click", ".removeRow", function () {
+  $(this).closest("tr").remove();
+});
+
+// Save button
+$("#saveDoctorPlan").on("click", function () {
+  alert("Doctor plan saved successfully!");
+});
+
+// Cancel button
+$("#cancelDoctorPlan").on("click", function () {
+  if (confirm("Are you sure you want to cancel?")) {
+    $("#doctorProductBody").html(""); // Clear table
+  }
+});
+
+</script>
 
 </body>
-
 </html>
